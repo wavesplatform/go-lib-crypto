@@ -188,4 +188,4 @@ func main() {
 
 ## Documentation
 
-["`go-lib-crypto` on GoDoc"](http://godoc.org/github.com/wavesplatform/go-lib-crypto).
+[`go-lib-crypto` on GoDoc](http://godoc.org/github.com/wavesplatform/go-lib-crypto).
