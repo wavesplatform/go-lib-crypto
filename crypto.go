@@ -232,13 +232,13 @@ func (c *crypto) SignBytes(bytes Bytes, privateKey PrivateKey) Bytes {
 	return Bytes(s[:SignatureLength])
 }
 
-// SignBytesBySeed returns a signature for the `bytes` by a private keys generated from the `seed`.~``
+// SignBytesBySeed returns a signature for the `bytes` by a private keys generated from the `seed`.
 func (c *crypto) SignBytesBySeed(bytes Bytes, seed Seed) Bytes {
 	sk := c.PrivateKey(seed)
 	return c.SignBytes(bytes, sk)
 }
 
-// VerifySignature returns true if `signature` is a valid signature of `bytes` by `publicKey`.
+// VerifySignature returns true if `signature` is a valid signature of `bytes` message signed by `publicKey` key.
 func (c *crypto) VerifySignature(publicKey PublicKey, bytes, signature Bytes) bool {
 	publicKeyBytes := c.Base58Decode(string(publicKey))
 	if len(publicKeyBytes) != DigestLength {
@@ -277,7 +277,7 @@ func (c *crypto) VerifySignature(publicKey PublicKey, bytes, signature Bytes) bo
 	return ed25519.Verify(edPubKey, bytes, s)
 }
 
-// VerifyPublicKey returns true if `publicKey` is a valid public key.
+// VerifyAddressChecksum returns true if `address` has a valid checksum.
 func (c *crypto) VerifyAddressChecksum(address Address) bool {
 	ab := c.Base58Decode(string(address))
 	if len(ab) != addressSize {
@@ -290,7 +290,7 @@ func (c *crypto) VerifyAddressChecksum(address Address) bool {
 	return bytes.Equal(ab[headerSize+bodySize:addressSize], cs[:checksumSize])
 }
 
-// VerifyAddress returns true if `address` is a valid Waves address for the given `chainId` and `publicKey`.
+// VerifyAddress returns true if `address` is a valid Waves address for the given `chainID`.
 func (c *crypto) VerifyAddress(address Address, chainID WavesChainID) bool {
 	ab := c.Base58Decode(string(address))
 	if len(ab) != addressSize {

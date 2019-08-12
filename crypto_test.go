@@ -239,6 +239,7 @@ func TestVerifyAddress(t *testing.T) {
 		{"3P5CHxJ2HjQk9efEGPoznavZ39JhG6wga", 'W', false},
 		{"3P3cCtmag4bL11wg9grrGseNhp1Q8ocsPzy", 'W', false},
 		{"5A48cxZtRpmxJNuNKxG7s1k46w9McoaCeyF", 'W', false},
+		{"3N9Q2drEHLj5XVNuo1cphYMq4jBN7qoKW6e", 'T', true},
 	}
 	for _, tc := range tests {
 		ok := c.VerifyAddress(tc.address, tc.chainID)
