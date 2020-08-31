@@ -9,7 +9,7 @@ import (
 	"hash"
 	"strings"
 
-	"github.com/agl/ed25519"
+	"golang.org/x/crypto/ed25519" // "github.com/agl/ed25519"
 	"github.com/agl/ed25519/edwards25519"
 	"github.com/mr-tron/base58"
 	"github.com/tyler-smith/go-bip39"
